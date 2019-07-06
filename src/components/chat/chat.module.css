@@ -1,0 +1,55 @@
+.chat_wrapper {
+	max-width: 350px;
+	width: 100%;
+	height: 500px;
+	margin: 30px auto;
+	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 0 0 3px 1px #000;
+}
+
+.chat_header {
+	height: 8%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #e0e0ed;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chat_message_box {
+	height: 75%;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chat_form_container {
+	height: 17%;
+	background: #e0e0ed;
+	box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.chat_form {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.chat_form textarea {
+	height: 100%;
+	width: 88%;
+	padding: 7px;
+	border: none;
+	border-radius: 10px;
+	resize: none;
+	font-size: 12px;
+}
+
+.chat_form button {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: none;
+	background: url('../../images/send.png') 0 0 / contain no-repeat;
+}
