@@ -1,56 +1,93 @@
 import React from 'react';
 import css from './chat.module.css';
-import Message from "../message";
+import Message from '../message';
 
+const socket = new WebSocket('ws://localhost:8080');
+socket.onopen = () => console.log('server is running');
+socket.onclose = () => console.log('disconnected');
+socket.message = response => console.log(response.data);
 
 export default class Chat extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			data: [
-				{name:'User1', text:'Text', isIncoming:false},
-				{name:'User2', text:'Text', isIncoming:true},
-				{name:'User1', text:'Text', isIncoming:false}
+			dataMessages: [
+				{name:'User1', message:'Text'},
+				{name:'User2', message:'Text'},
+				{name:'User1', message:'Text'}
 			],
-			currentMessageValue: '',
+			currentMessage: {
+				name: '',
+				message: ''
+			},
 		}
 	}
 
-	onNewMessageChange = (e) => {
+	onChangeName = (e) => {
 		this.setState({
-			currentMessageValue: e.target.value
+			currentMessage: {
+				...this.state.currentMessage,
+				name: e.target.value
+			}
 		});
 	};
 
-	sendMessage = () => {
-		const {data, currentMessageValue} = this.state;
+	onChangeMessage = (e) => {
 		this.setState({
-			data: [...data, {name: 'User1', text: currentMessageValue, isIncoming: false}],
-			currentMessageValue: ''
-		})
+			currentMessage: {
+					...this.state.currentMessage,
+					message: e.target.value
+			}
+		});
+	};
+
+	sendMessage = (e) => {
+		if(e) {
+			e.preventDefault();
+		}
+		const {dataMessages, currentMessage} = this.state;
+		this.props.dispatch(currentMessage.message, currentMessage.name);
+		this.setState({
+			dataMessages: [...dataMessages, {name: currentMessage.name, message: currentMessage.message}],
+			currentMessage: {
+				name: '',
+				message: ''
+			}
+		});
+		socket.send({
+			dataMessages: [...dataMessages, {name: currentMessage.name, message: currentMessage.message}],
+			currentMessage: {
+				name: '',
+				message: ''
+			}
+		});
+		return false;
 	};
 
 	enterPressed = (e) => {
 		let code = e.keyCode || e.which;
 		if (code === 13) {
+			e.preventDefault();
 			this.sendMessage();
-		};
+		}
 	};
 
 	render() {
-		let  {currentMessageValue} = this.state;
+		const {currentMessage} = this.state;
+
 		return (
 			<div className={css.chat_wrapper}>
 				<h2 className={css.chat_header}>CHAT</h2>
 				<div className={css.chat_message_box}>
-					{this.state.data.map((data, index) => {
+					{this.state.dataMessages.map((data, index) => {
 						return <Message data={data} key={index} />
 					})}
 				</div>
 				<div className={css.chat_form_container}>
 					<form className={css.chat_form}>
-						<textarea placeholder='Type a message here' value={currentMessageValue} onChange={this.onNewMessageChange} onKeyPress={this.enterPressed}></textarea>
-						<button className={css.sendMessage} onClick={this.sendMessage}></button>
+						<input placeholder='Nickname' type='text' value={currentMessage.name} onChange={this.onChangeName} className={css.chat_form_name}></input>
+						<input placeholder='Message' type='text' value={currentMessage.message} onChange={this.onChangeMessage} onKeyPress={this.enterPressed} className={css.chat_form_text}></input>
+						<button className={css.sendMessage} onClick={this.sendMessage}>Send</button>
 					</form>
 				</div>
 			</div>

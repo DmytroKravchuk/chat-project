@@ -1,30 +1,14 @@
 .message_wrap {
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-}
-
-.message_wrap_incoming {
-	display: flex;
-	padding: 10px;
-}
-
-.message_wrap_outgoing {
-	display: flex;
-	justify-content: flex-end;
 	padding: 10px;
 }
 
 .message {
 	max-width: 90%;
-	background: #e0e0ed;
+	background: #fff;
 	border-radius: 10px;
-	text-align: right;
 	padding: 5px 10px;
 	font-size: 12px;
-}
-
-.message_wrap_incoming .message {
 	text-align: left;
 }
 
