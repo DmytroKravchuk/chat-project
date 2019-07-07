@@ -1,10 +1,9 @@
 import * as types from '../constants/ActionTypes';
 
 const messages = (state = [], action) => {
-	const { ADD_MESSAGE, MESSAGE_RECEIVED } = types;
-
+	const { SEND_MESSAGE, MESSAGE_RECEIVED } = types;
 	switch (action.type) {
-		case ADD_MESSAGE:
+		case SEND_MESSAGE:
 		case MESSAGE_RECEIVED:
 			return state.concat([
 				{

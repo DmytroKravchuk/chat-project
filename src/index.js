@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore} from "redux";
 import App from './App';
 import './index.css';
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import reducers from './reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import chat from './reducers';
-const store = createStore(chat;
-
+//const store = createStore(reducers);
+const store = createStore(reducers, / preloadedState, /, devToolsEnhancer());
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
