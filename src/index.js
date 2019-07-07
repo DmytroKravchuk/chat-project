@@ -2,5 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+import reducers from './reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//const store = createStore(reducers);
+const store = createStore(reducers, / preloadedState, /, devToolsEnhancer());
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>, document.getElementById('root'));
