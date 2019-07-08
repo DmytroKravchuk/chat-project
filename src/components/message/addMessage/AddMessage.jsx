@@ -1,5 +1,5 @@
 import React from 'react';
-import css from '../../chat/chat.module.scss';
+import css from './addMessage.module.scss';
 
 
 export default class AddMessage extends React.Component {
@@ -44,13 +44,13 @@ export default class AddMessage extends React.Component {
 	render() {
 		const {newName, newMessage} = this.state;
 		return (
-			<div className={css.chat_form_container}>
-				<div className={css.chat_form}>
-					<input placeholder='Nickname' type='text' className={css.chat_form_name}
+			<div className={css.chat_form}>
+				<div className={css.chat_form__container}>
+					<input placeholder='Nickname' type='text' className={css.chat_form__name}
 						   value={newName}
 						   onChange={this.onChangeName}
 						   onKeyPress={this.onEnterPressed} />
-					<input placeholder='Message' type='text' className={css.chat_form_text}
+					<input placeholder='Message' type='text' className={css.chat_form__text}
 						   value={newMessage}
 						   onChange={this.onChangeMessage}
 						   onKeyPress={this.onEnterPressed} />
