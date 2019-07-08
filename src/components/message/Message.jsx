@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './message.module.css';
+import css from './message.module.scss';
 
 const Message = ({data}) => {
 	let {author, message} = data;

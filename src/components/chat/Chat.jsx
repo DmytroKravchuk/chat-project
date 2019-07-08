@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './chat.module.css';
+import css from './chat.module.scss';
 import AddMessageContainer from '../message/addMessage';
 import ListMessageContainer from '../message/listMessage';
 

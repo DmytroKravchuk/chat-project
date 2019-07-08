@@ -1,5 +1,5 @@
 import React from 'react';
-import css from '../../chat/chat.module.css';
+import css from '../../chat/chat.module.scss';
 
 
 export default class AddMessage extends React.Component {

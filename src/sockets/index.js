@@ -2,7 +2,7 @@ import * as types from '../constants/ActionTypes';
 import { sendMessage, messageReceive } from '../actions';
 
 const setupSocket = (dispatch) => {
-	const socket = new WebSocket('ws://localhost:8080');
+	const socket = new WebSocket('ws://localhost:8081');
 	socket.onopen = () => {
 		socket.send(JSON.stringify({
 			type: types.MESSAGE_RECEIVED

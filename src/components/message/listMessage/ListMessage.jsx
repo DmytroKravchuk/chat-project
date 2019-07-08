@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './listMessage.module.css';
+import css from './listMessage.module.scss';
 import Message from '../Message';
 
 export const ListMessage = (props) => {

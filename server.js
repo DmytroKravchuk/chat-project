@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 
 const wss = new WebSocket.Server({
-	port: 8080
+	port: 8081
 });
 
 const messages = [];
@@ -32,7 +32,6 @@ wss.on('connection', ws => {
 				}, ws, true);
 				break;
 			case 'SEND_MESSAGE':
-				console.log(new Date().getSeconds());
 				addMessage(message);
 				broadcast({
 					type: 'SEND_MESSAGE',
