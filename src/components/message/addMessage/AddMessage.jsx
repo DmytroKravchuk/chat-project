@@ -54,8 +54,7 @@ export default class AddMessage extends React.Component {
 						   value={newMessage}
 						   onChange={this.onChangeMessage}
 						   onKeyPress={this.onEnterPressed} />
-					<button className={css.sendMessage}
-							onClick={this.onSendMessage}>Send</button>
+					<button onClick={this.onSendMessage}>Send</button>
 				</div>
 			</div>
 		)
