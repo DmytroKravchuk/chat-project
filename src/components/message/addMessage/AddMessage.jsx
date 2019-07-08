@@ -25,6 +25,9 @@ export default class AddMessage extends React.Component {
 
 	onSendMessage = () => {
 		const { newMessage, newName } = this.state;
+		if (newMessage.trim().length === 0  || newName.trim().length ===0) {
+			return false;
+		}
 		this.props.sendMessage(newMessage, newName);
 		this.reset();
 	};
