@@ -12,13 +12,13 @@ const setupSocket = (dispatch, ) => {
 		const data = JSON.parse(event.data);
 		switch (data.type) {
 			case types.SEND_MESSAGE:
-				dispatch(messageReceive(data.message, data.author, data.id));
+				dispatch(messageReceive(data.message, data.author));
 				break;
 			case types.MESSAGE_RECEIVED:
 				if (data.messages && data.messages.length > 0) {
 					data.messages.forEach((item) => {
 						let itemMessage = JSON.parse(item);
-						dispatch(messageReceive(itemMessage.message, itemMessage.author, itemMessage.id));
+						dispatch(messageReceive(itemMessage.message, itemMessage.author));
 					});
 				}
 				break;
