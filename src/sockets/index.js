@@ -1,7 +1,7 @@
 import * as types from '../constants/ActionTypes';
-import { sendMessage, messageReceive } from '../actions';
+import { messageReceive } from '../actions';
 
-const setupSocket = (dispatch) => {
+const setupSocket = (dispatch, ) => {
 	const socket = new WebSocket('ws://localhost:8081');
 	socket.onopen = () => {
 		socket.send(JSON.stringify({
@@ -12,7 +12,7 @@ const setupSocket = (dispatch) => {
 		const data = JSON.parse(event.data);
 		switch (data.type) {
 			case types.SEND_MESSAGE:
-				dispatch(sendMessage(data.message, data.author, data.id));
+				dispatch(messageReceive(data.message, data.author, data.id));
 				break;
 			case types.MESSAGE_RECEIVED:
 				if (data.messages && data.messages.length > 0) {

@@ -44,5 +44,4 @@ wss.on('connection', ws => {
 				break
 		}
 	});
-
 });

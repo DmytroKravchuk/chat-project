@@ -11,9 +11,15 @@ import setupSocket from './sockets';
 import handleNewMessage from './sagas'
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+const store = createStore(
+	reducers,
+	composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+
 const socket = setupSocket(store.dispatch);
-sagaMiddleware.run(handleNewMessage, { socket });
+
+sagaMiddleware.run(handleNewMessage, {socket});
 
 ReactDOM.render(
 	<Provider store={store}>
