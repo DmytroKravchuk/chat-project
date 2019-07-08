@@ -32,11 +32,13 @@ wss.on('connection', ws => {
 				}, ws, true);
 				break;
 			case 'SEND_MESSAGE':
+				console.log(new Date().getSeconds());
 				addMessage(message);
 				broadcast({
 					type: 'SEND_MESSAGE',
 					message: data.message,
-					author: data.author
+					author: data.author,
+					id: data.id
 				}, ws);
 				break;
 			default:

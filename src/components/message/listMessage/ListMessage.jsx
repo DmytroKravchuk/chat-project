@@ -1,5 +1,5 @@
 import React from 'react';
-import css from '../../chat/chat.module.css';
+import css from './listMessage.module.css';
 import Message from '../Message';
 
 export const ListMessage = (props) => {
@@ -7,7 +7,7 @@ export const ListMessage = (props) => {
 		? props.messages.map((data, index) => {
 			return <Message data={data} key={index} />
 		})
-		: <div>No messages</div>;
+		: <div className={css.chat_no_message}>No messages</div>;
 	return (
 		<div className={css.chat_message_box}>
 			{content}
