@@ -18,15 +18,6 @@
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
-.chat_message_box {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	height: 84%;
-	background: #e0e0ed;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.3);
-}
-
 .chat_form_container {
 	height: 8%;
 	box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
