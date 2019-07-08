@@ -28,26 +28,27 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-}
 
-.chat_form input {
-	width: 30%;
-	height: 100%;
-	border: none;
-	border-right: 2px solid #e0e0ed;
-	outline: none;
-	font-size: 12px;
-	padding: 0 5px;
-}
+	input {
+		width: 30%;
+		height: 100%;
+		border: none;
+		border-right: 2px solid #e0e0ed;
+		outline: none;
+		font-size: 12px;
+		padding: 0 5px;
+	}
 
-.chat_form .chat_form_text {
-	width: 50%;
-}
+	.chat_form_text {
+		width: 50%;
+	}
 
-.chat_form button {
-	width: 20%;
-	height: 100%;
-	border: none;
-	background: blue;
-	color: #fff;
+	button {
+		width: 20%;
+		height: 100%;
+		border: none;
+		background: blue;
+		color: #fff;
+	}
+
 }
