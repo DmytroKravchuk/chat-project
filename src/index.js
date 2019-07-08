@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import {Provider} from "react-redux";
-import {createStore} from "redux";
+import createSagaMiddleware from 'redux-saga'
+import {createStore, applyMiddleware} from "redux";
 import reducers from './reducers';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import setupSocket from './sockets';
+import handleNewMessage from './sagas'
 
-//const store = createStore(reducers);
-const store = createStore(reducers, / preloadedState, /, devToolsEnhancer());
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+const socket = setupSocket(store.dispatch);
+sagaMiddleware.run(handleNewMessage, { socket });
+
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
