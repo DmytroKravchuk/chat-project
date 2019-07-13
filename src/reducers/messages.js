@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import uniqid from 'uniqid';
 
 const messages = (state = [], action) => {
 	const { SEND_MESSAGE, MESSAGE_RECEIVED } = types;
@@ -8,7 +9,8 @@ const messages = (state = [], action) => {
 			return state.concat([
 				{
 					message: action.message,
-					author: action.author
+					author: action.author,
+					id: uniqid()
 				}
 			]);
 		default:

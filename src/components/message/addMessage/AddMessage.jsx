@@ -6,29 +6,29 @@ export default class AddMessage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			newName: '',
-			newMessage: ''
+			name: '',
+			message: ''
 		}
 	}
 
 	onChangeName = (e) => {
 		this.setState({
-			newName: e.target.value
+			name: e.target.value
 		})
 	};
 
 	onChangeMessage = (e) => {
 		this.setState({
-			newMessage: e.target.value
+			message: e.target.value
 		})
 	};
 
 	onSendMessage = () => {
-		const { newMessage, newName } = this.state;
-		if (newMessage.trim().length === 0  || newName.trim().length ===0) {
+		const { name, message } = this.state;
+		if (message.trim().length === 0  || name.trim().length ===0) {
 			return false;
 		}
-		this.props.sendMessage(newMessage, newName);
+		this.props.sendMessage(message, name);
 		this.reset();
 	};
 
@@ -40,21 +40,21 @@ export default class AddMessage extends React.Component {
 
 	reset = () => {
 		this.setState({
-			newMessage: ''
+			message: ''
 		})
 	};
 
 	render() {
-		const {newName, newMessage} = this.state;
+		const {name, message} = this.state;
 		return (
 			<div className={css.chat_form}>
 				<div className={css.chat_form__container}>
 					<input placeholder='Nickname' type='text' className={css.chat_form__name}
-						   value={newName}
+						   value={name}
 						   onChange={this.onChangeName}
 						   onKeyPress={this.onEnterPressed} />
 					<input placeholder='Message' type='text' className={css.chat_form__text}
-						   value={newMessage}
+						   value={message}
 						   onChange={this.onChangeMessage}
 						   onKeyPress={this.onEnterPressed} />
 					<button onClick={this.onSendMessage}>Send</button>
