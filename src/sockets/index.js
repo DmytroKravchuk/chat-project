@@ -17,8 +17,7 @@ const setupSocket = (dispatch, ) => {
 			case types.MESSAGE_RECEIVED:
 				if (data.messages && data.messages.length > 0) {
 					data.messages.forEach((item) => {
-						let itemMessage = JSON.parse(item);
-						dispatch(messageReceive(itemMessage.message, itemMessage.author));
+						dispatch(messageReceive(item.message, item.author));
 					});
 				}
 				break;

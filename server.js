@@ -32,7 +32,7 @@ wss.on('connection', ws => {
 				}, ws, true);
 				break;
 			case 'SEND_MESSAGE':
-				addMessage(message);
+				addMessage({message: data.message, author: data.author});
 				broadcast({
 					type: 'SEND_MESSAGE',
 					message: data.message,
